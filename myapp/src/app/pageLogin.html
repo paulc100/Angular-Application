@@ -1,0 +1,29 @@
+<br>
+<p *ngIf="reqInfo?.authenticated">You are logged in</p>
+<div *ngIf="!reqInfo?.authenticated">
+<p style="font-weight: bold;">Login</p>
+<form #myForm="ngForm">
+    <table style="border-spacing: 15px 1px;">
+        <tr>
+            <td>
+                Username:
+            </td>
+            <td>
+                <input type="text" name="username" required [(ngModel)]="username"
+                    #Username="ngModel">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input type="password" name="password" required [(ngModel)]="password"
+                    #Password="ngModel">
+            </td>
+        </tr>
+    </table>
+    <br>
+    <input type="submit" (click)="Login(myForm)" value="Login">
+</form>
+</div>

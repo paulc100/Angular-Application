@@ -1,0 +1,11 @@
+<nav>
+    <a *ngIf="reqInfo?.authenticated && (hr || manager)" routerLink="/page-employees" routerLinkActive="active">Employees | </a>
+    <a *ngIf="reqInfo?.authenticated && hr" routerLink="/page-payroll" routerLinkActive="active">Payroll | </a>
+    <a *ngIf="reqInfo?.authenticated" routerLink="/page-profile" routerLinkActive="active">Profile | </a>
+    <a *ngIf="reqInfo?.authenticated" [routerLink]="" (click)="Logout()" routerLinkActive="active">Logout ({{reqInfo?.username}})</a>
+    
+    <a *ngIf="!reqInfo?.authenticated" routerLink="/page-register" routerLinkActive="active">Register | </a>
+    <a *ngIf="!reqInfo?.authenticated" routerLink="/page-login" routerLinkActive="active">Login</a>
+</nav>
+<!-- Where router should display a view -->
+<router-outlet></router-outlet>

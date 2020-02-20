@@ -1,0 +1,101 @@
+<br>
+<p *ngIf="reqInfo?.authenticated">Logout to be able to make a new account</p>
+<div *ngIf="!reqInfo?.authenticated">
+
+<p style="font-weight: bold;">Register</p>
+<form #myForm="ngForm">
+    <table style="border-spacing: 15px 1px;">
+        <tr>
+            <td>
+                Username:
+            </td>
+            <td>
+                <input type="text" name="username" minlength="1" required [(ngModel)]="username"
+                    #UserName="ngModel">
+                <p style="display: inline;" *ngIf="UserName?.errors?.required && myForm.submitted">This field is required.</p>
+                <p style="display: inline;" *ngIf="UserName?.errors?.pattern && myForm.submitted"> Only letters, hyphens, and
+                    apostrophes allowed.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                First Name:
+            </td>
+            <td>
+                <input type="text" name="firstName" pattern="[a-zA-Z ]*" minlength="1" required [(ngModel)]="firstName"
+                    #FirstName="ngModel">
+                <p style="display: inline;" *ngIf="FirstName?.errors?.required && myForm.submitted">This field is required.</p>
+                <p style="display: inline;" *ngIf="FirstName?.errors?.pattern && myForm.submitted"> Only letters allowed.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Last Name:
+            </td>
+            <td>
+                <input type="text" name="lastName" minlength="1" pattern="[a-zA-Z ]*" required [(ngModel)]="lastName"
+                    #LastName="ngModel">
+                <p style="display: inline;" *ngIf="LastName?.errors?.required && myForm.submitted">This field is required.</p>
+                <p style="display: inline;" *ngIf="LastName?.errors?.pattern && myForm.submitted"> Only letters allowed.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Street Address:
+            </td>
+            <td>
+                <input type="text" name="streetAddress" minlength="1" required [(ngModel)]="streetAddress"
+                    #StreetAddress="ngModel">
+                <p style="display: inline;" *ngIf="StreetAddress?.errors?.required && myForm.submitted">This field is required.</p>
+                <p style="display: inline;" *ngIf="StreetAddress?.errors?.pattern && myForm.submitted"> Type in an address.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Email:
+            </td>
+            <td>
+                <input type="text" name="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" minlength="1" required [(ngModel)]="email"
+                    #Email="ngModel">
+                <p style="display: inline;" *ngIf="Email?.errors?.required && myForm.submitted">This field is required.</p>
+                <p style="display: inline;" *ngIf="Email?.errors?.pattern && myForm.submitted"> Type in a real email address.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Phone:
+            </td>
+            <td>
+                <input type="text" name="phone" pattern="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" minlength="1" required [(ngModel)]="phone"
+                    #Phone="ngModel">
+                    <p style="display: inline;" *ngIf="Phone?.errors?.required && myForm.submitted">This field is required.</p>
+                    <p style="display: inline;" *ngIf="Phone?.errors?.pattern && myForm.submitted"> Type in a phone number eg. "604-350-5000".</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input type="password" name="password" minlength="1" required [(ngModel)]="password"
+                    #Password="ngModel">
+                <p style="display: inline;" *ngIf="Password?.errors?.required && myForm.submitted">This field is required.</p>
+                <p style="display: inline;" *ngIf="Password?.errors?.pattern && myForm.submitted"> Type in a password.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Password Confirm:
+            </td>
+            <td>
+                <input type="password" name="passwordConfirm" minlength="1" required [(ngModel)]="passwordConfirm"
+                    #PasswordConfirm="ngModel">
+                <p style="display: inline;" *ngIf="PasswordConfirm?.errors?.required && myForm.submitted">This field is required.</p>
+                <p style="display: inline;" *ngIf="PasswordConfirm?.errors?.pattern && myForm.submitted"> Type in the same password as above.</p>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <input type="submit" (click)="Register(myForm.valid)" value="Sign up">
+    <p style="display: inline;">{{errorMessage}}</p>
+</form>

@@ -1,0 +1,50 @@
+<br>
+<p *ngIf="!reqInfo?.authenticated">You do not have the correct permissions</p>
+<div *ngIf="reqInfo?.authenticated">
+
+<p style="font-weight: bold;">Employees</p>
+<form #myForm="ngForm">
+<table style="border-spacing: 15px 1px;">
+    <tr>
+        <td style="font-weight: bold;">
+            Username
+        </td>
+        <td style="font-weight: bold;">
+            First Name
+        </td>
+        <td style="font-weight: bold;">
+            Last Name
+        </td>
+        <td style="font-weight: bold;">
+            Street Address
+        </td>
+        <td style="font-weight: bold;">
+            Email
+        </td>
+        <td style="font-weight: bold;">
+            Phone
+        </td>
+    </tr>
+    <tr *ngFor="let employee of employeesArray; let i = index">
+        <td>
+            {{employee.username}}
+        </td>
+        <td>
+            {{employee.firstName}}
+        </td>
+        <td>
+            {{employee.lastName}}
+        </td>
+        <td>
+            {{employee.streetAddress}}
+        </td>
+        <td>
+            <a [routerLink]="">{{employee.email}}</a>
+        </td>
+        <td>
+            {{employee.phone}}
+        </td>
+    </tr>
+</table>
+</form>
+</div>

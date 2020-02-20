@@ -1,0 +1,72 @@
+<br>
+<p *ngIf="!reqInfo?.authenticated">You do not have the correct permissions</p>
+<div *ngIf="reqInfo?.authenticated">
+    
+<p style="font-weight: bold;">Profile</p>
+<form #myForm="ngForm">
+    <table style="border-spacing: 15px 1px;">
+        <tr>
+            <td>
+                Username:
+            </td>
+            <td>
+                <input type="text" disabled name="username" [(ngModel)]="username"
+                    #UserName="ngModel">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                First Name:
+            </td>
+            <td>
+                <input type="text" name="firstName" pattern="[a-zA-Z-' ]*" required [(ngModel)]="firstName"
+                    #FirstName="ngModel">
+                <p style="display: inline;" *ngIf="FirstName?.errors?.required && myForm.submitted">This field is required.</p>
+                <p style="display: inline;" *ngIf="FirstName?.errors?.pattern && myForm.submitted"> Only letters, hyphens, and
+                    apostrophes allowed.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Last Name:
+            </td>
+            <td>
+                <input type="text" name="lastName" pattern="[a-zA-Z-' ]*" required [(ngModel)]="lastName"
+                    #LastName="ngModel">
+                <p style="display: inline;" *ngIf="LastName?.errors?.required && myForm.submitted">This field is required.</p>
+                <p style="display: inline;" *ngIf="LastName?.errors?.pattern && myForm.submitted"> Only letters, hyphens, and
+                    apostrophes allowed.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Street Address:
+            </td>
+            <td>
+                <input type="text" name="streetAddress" required [(ngModel)]="streetAddress"
+                    #StreetAddress="ngModel">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Email:
+            </td>
+            <td>
+                <input type="text" name="email" required [(ngModel)]="email"
+                    #Email="ngModel">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Phone:
+            </td>
+            <td>
+                <input type="text" name="phone" required [(ngModel)]="phone"
+                    #Phone="ngModel">
+            </td>
+        </tr>
+    </table>
+    <br>
+    <input type="submit" (click)="Update(myForm.valid)" value="Update">
+    {{errorMessage}}
+</form>
